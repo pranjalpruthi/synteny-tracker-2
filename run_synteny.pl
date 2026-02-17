@@ -54,8 +54,8 @@ my $ASCII_LOGO = <<'LOGO';
 --            |___/                     |___/                                  v2.0
 
   Modernized Modular Synteny Pipeline
-  Part of BioinformaticsOnLine
-  Open source bioinformatics tools for the community
+  Empowered by BioinformaticsOnLine
+  Open source bioinformatics community
   https://bioinformaticsonline.com
 
   Jitendra Lab of Bioinformatics and Big Data

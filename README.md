@@ -5,8 +5,10 @@
 
 **Modernized Modular Synteny Pipeline**
 
-  Empowered by BioinformaticsOnLine
-  Open source bioinformatics community
+  💪Empowered by [BioinformaticsOnLine](https://bioinformaticsonline.com)
+  
+  ✨Open source bioinformatics community ✨
+  
 
 SyntenyTracker v2.0 is a comprehensive bioinformatics tool designed for comparative genomics, enabling users to identify and visualize syntenic regions between genomes. This updated version integrates direct support for **SatsumaSynteny**, providing advanced whole-genome alignment capabilities alongside traditional synteny analysis.
 
