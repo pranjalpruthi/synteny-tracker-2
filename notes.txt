@@ -1,0 +1,6 @@
+anaconda upload /Users/pranjalpruthi/mambaforge/conda-bld/noarch/r-syntenyplotter-1.0.1-r45h6115d3f_0.tar.bz2 -u jitendralab
+
+i. used regis dev env
+
+build:
+base ❯ conda build r-syntenyplotter/ --no-anaconda-upload

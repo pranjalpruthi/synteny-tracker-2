@@ -6,11 +6,23 @@
 **Modernized Modular Synteny Pipeline**
 
   💪Empowered by [BioinformaticsOnLine](https://bioinformaticsonline.com)
-  
+
   ✨Open source bioinformatics community ✨
   
 
-SyntenyTracker v2.0 is a comprehensive bioinformatics tool designed for comparative genomics, enabling users to identify and visualize syntenic regions between genomes. This updated version integrates direct support for **SatsumaSynteny**, providing advanced whole-genome alignment capabilities alongside traditional synteny analysis.
+SyntenyTracker v2.0 is a comprehensive bioinformatics tool designed for comparative genomics, enabling users to identify and visualize syntenic regions between genomes. ## 📄 License & Commercial Use
+
+## 📄 License & Commercial Use
+
+**SyntenyTracker v2.0** is released under a **Custom Non-Commercial License**.
+
+✅ **Academic & Non-Profit Use:** Usage for academic research and non-profit organizations is free and permitted.
+❌ **Commercial Use Prohibited:** You may **NOT** use this software for paid purposes, proprietary bioinformatics pipelines, internal company tools, or distribute it within private companies without explicit permission.
+🔒 **Permission Required:** For commercial use, you MUST obtain written permission from the authors (Donthu et al. and Jitendra Lab).
+
+Original SyntenyTracker logic is derived from Donthu et al. (2009), modernized by [BioinformaticsOnLine](https://bioinformaticsonline.com).
+
+This project is licensed under a custom Non-Commercial License - see the [LICENSE](LICENSE) file for details.umaSynteny**, providing advanced whole-genome alignment capabilities alongside traditional synteny analysis.
 
 This version is a modernization of the original SyntenyTracker by Donthu et al. (2009), developed by the **Jitendra Lab of Bioinformatics and Big Data** at CSIR-Institute of Genomics & Integrative Biology (CSIR-IGIB).
 
@@ -27,7 +39,7 @@ This version is a modernization of the original SyntenyTracker by Donthu et al. 
 ### Via Conda (Recommended)
 
 ```bash
-conda install -c jitendralab syntenytracker
+conda install -c jitendralab syntenytracker2
 ```
 
 ### Manual Installation
@@ -35,8 +47,8 @@ conda install -c jitendralab syntenytracker
 Clone the repository and ensure you have Perl installed with the required modules.
 
 ```bash
-git clone https://github.com/pranjalpruthi/getSYNTENY.git
-cd getSYNTENY
+git clone https://github.com/pranjalpruthi/synteny-tracker-2.git
+cd synteny-tracker-2
 # Ensure Perl is installed and accessible
 perl -v
 ```
@@ -47,7 +59,15 @@ perl -v
 
 ## 🚀 Usage
 
-Run the pipeline using the `run_synteny.pl` script:
+Run the pipeline using the `syntenytracker2` command (installed via Conda):
+
+```bash
+syntenytracker2 <ref_name> <tar_name> <block_size> <distBnMrks> <infile> [options]
+```
+
+### Manual Usage
+
+If you cloned the repository directly (without Conda), use:
 
 ```bash
 perl run_synteny.pl <ref_name> <tar_name> <block_size> <distBnMrks> <infile> [options]
@@ -134,7 +154,7 @@ If you use this tool, please cite the original SyntenyTracker paper:
 
 ## 🔗 Links
 
-*   **GitHub**: [https://github.com/pranjalpruthi/getSYNTENY](https://github.com/pranjalpruthi/getSYNTENY)
+*   **GitHub**: [https://github.com/pranjalpruthi/synteny-tracker-2](https://github.com/pranjalpruthi/synteny-tracker-2)
 *   **BioinformaticsOnLine**: [https://bioinformaticsonline.com](https://bioinformaticsonline.com)
 *   **Conda Channel**: [https://anaconda.org/channels/jitendralab/](https://anaconda.org/channels/jitendralab/)
 

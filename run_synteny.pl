@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 # SyntenyTracker v2.0 - Modernized Modular Synteny Pipeline
 # 
 # Original SyntenyTracker by:
