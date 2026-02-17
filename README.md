@@ -62,7 +62,7 @@ perl -v
 Run the pipeline using the `syntenytracker2` command (installed via Conda):
 
 ```bash
-syntenytracker2 <ref_name> <tar_name> <block_size> <distBnMrks> <infile> [options]
+syntenytracker2 Adineta_vaga Adineta_ricciae 100000 30000 ./sample/Adineta_ricciae.txt -s -k
 ```
 
 ### Manual Usage

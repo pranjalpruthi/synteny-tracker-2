@@ -36,7 +36,7 @@
 
 use strict;
 use warnings;
-use FindBin qw($Bin);
+use FindBin qw($RealBin);
 use File::Path qw(make_path remove_tree);
 use File::Basename qw(basename dirname);
 use File::Copy qw(copy);
@@ -64,7 +64,7 @@ LOGO
 
 # Help message
 my $HELP_MSG = <<'HELP';
-Usage: perl run_synteny.pl <ref_name> <tar_name> <block_size> <distBnMrks> <infile> [options]
+Usage: syntenytracker2 <ref_name> <tar_name> <block_size> <distBnMrks> <infile> [options]
 
 Arguments:
   ref_name       Reference genome name (e.g., Adineta_vaga)
@@ -94,19 +94,19 @@ Output:
 
 Examples:
   # Basic usage with pre-formatted input
-  perl run_synteny.pl Adineta_vaga Adineta_ricciae 100000 30000 st_input.txt
+  syntenytracker2 Adineta_vaga Adineta_ricciae 100000 30000 st_input.txt
 
   # Process raw Satsuma output
-  perl run_synteny.pl Adineta_vaga Adineta_ricciae 100000 30000 satsuma.out -s
+  syntenytracker2 Adineta_vaga Adineta_ricciae 100000 30000 satsuma.out -s
 
   # Custom job name
-  perl run_synteny.pl Adineta_vaga Adineta_ricciae 100000 30000 input.txt -j my_analysis
+  syntenytracker2 Adineta_vaga Adineta_ricciae 100000 30000 input.txt -j my_analysis
 
   # Custom output directory
-  perl run_synteny.pl Adineta_vaga Adineta_ricciae 100000 30000 input.txt -o /path/to/results
+  syntenytracker2 Adineta_vaga Adineta_ricciae 100000 30000 input.txt -o /path/to/results
 
   # Keep intermediate files for debugging
-  perl run_synteny.pl Adineta_vaga Adineta_ricciae 100000 30000 input.txt -k
+  syntenytracker2 Adineta_vaga Adineta_ricciae 100000 30000 input.txt -k
 
 Citation:
   Original SyntenyTracker: Donthu R, Lewin HA, Larkin DM. (2009)
@@ -177,7 +177,7 @@ make_path($job_in_dir) or die "Cannot create $job_in_dir: $!";
 make_path($job_tmp_dir) or die "Cannot create $job_tmp_dir: $!";
 
 # Modules directory
-my $modules_dir = "$Bin/modules";
+my $modules_dir = "$RealBin/modules";
 
 # Print header
 print STDERR $ASCII_LOGO . "\n";
@@ -205,7 +205,7 @@ if ($satsuma_mode) {
     $job_input = "$input_dir/st_input";
     
     # Load and run preprocessing
-    do "$modules_dir/satsuma_preprocess.pl" or die "Error loading satsuma_preprocess.pl: " . ($@ || $!) . "\n";
+    do "$modules_dir/satsuma_preprocess.pl" or die "Error loading satsuma_preprocess.pl from '$modules_dir': " . ($@ || $!) . "\n";
     preprocess_satsuma($infile, $job_input, $job_tmp_dir, $keep_tmp);
     
     # Also copy to job folder for reference
@@ -232,7 +232,7 @@ $ARGV[4] = $job_input;  # Use the copied input file
 # Header printed above
 
 # Load all subroutine definitions first
-do "$modules_dir/0_subs.pl" or die "Error in 0_subs.pl: " . ($@ || $!) . "\n";
+do "$modules_dir/0_subs.pl" or die "Error in 0_subs.pl from '$modules_dir': " . ($@ || $!) . "\n";
 
 # Execute pipeline stages in order
 my @stages = (
@@ -248,7 +248,7 @@ my @stages = (
 my $start_time = time();
 for my $stage (@stages) {
     print STDERR "  Stage: $stage\n";
-    do "$modules_dir/$stage" or die "Error in $stage: " . ($@ || $!) . "\n";
+    do "$modules_dir/$stage" or die "Error in $stage from '$modules_dir': " . ($@ || $!) . "\n";
 }
 my $elapsed = time() - $start_time;
 
