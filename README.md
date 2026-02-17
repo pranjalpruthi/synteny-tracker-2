@@ -1,13 +1,7 @@
 # SyntenyTracker v2.0
---      ____              _                  _____               _             
---     / ___| _   _ _ __ | |_ ___ _ __  _   |_   _| __ __ _  ___| | _____ _ __ 
---     \___ \| | | | '_ \| __/ _ \ '_ \| | | || || '__/ _` |/ __| |/ / _ \ '__|
---      ___) | |_| | | | | ||  __/ | | | |_| || || | | (_| | (__|   <  __/ |   
---     |____/ \__, |_| |_|\__\___|_| |_|\__, ||_||_|  \__,_|\___|_|\_\___|_|   
---            |___/                     |___/                                  v2.0
 
+<img width="602" height="100" alt="ascii-art-text" src="https://github.com/user-attachments/assets/154df9bd-8598-4aea-9a96-442f7fb5559b" />
 
-  Modernized Modular Synteny Pipeline
 
 **Modernized Modular Synteny Pipeline**
 
