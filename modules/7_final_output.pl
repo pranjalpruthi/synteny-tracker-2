@@ -75,6 +75,7 @@ foreach my $key_ft (sort {$a<=>$b} keys %hash_ft) #reads HSB by HSB
 		}
                 @target_ft_or = remove_empty_cells(@target_ft_or); $or_ft = getOrien(@target_ft_or);
 		if($or_ft eq "Up"){$sign_ft = "+";}elsif($or_ft eq "Down"){$sign_ft="-";}
+		else{$sign_ft = marker_strand(@temp_ft);} # SYBR: trend undecided ("Nor"/"None")
 		@target_ft = sort {$a<=>$b} (@target_ft); @target_ft = remove_empty_cells(@target_ft);
 		@ref_ft = sort {$a<=>$b} (@ref_ft); @ref_ft = remove_empty_cells(@ref_ft);
 #		print WR "$tar_name\t$temp2_ft[1]\t$target_ft[0]\t$target_ft[-1]\t$temp2_ft[7]\t$ref_ft[0]\t$ref_ft[-1]\t$ref_name\t$key_ft\n";
@@ -83,6 +84,28 @@ foreach my $key_ft (sort {$a<=>$b} keys %hash_ft) #reads HSB by HSB
 	}
 }
 
+
+# SYBR: sign of an HSB from the strands of its markers. The marker names
+# carry the alignment strand ("12+", "13-", written by st_format_NJ.pl);
+# each marker votes with its target length, a tie goes to the first marker.
+# Used when the coordinate trend cannot give the orientation (blocks of one
+# or two markers, or no clear up/down trend), which otherwise left Sign empty.
+sub marker_strand
+{
+	my %len = ("+" => 0, "-" => 0); my $first = "";
+	foreach my $l (@_)
+	{
+		my @f = split(/\s+/, $l);
+		next unless defined $f[4] && $f[4] =~ /([+-])$/;
+		my $s = $1;
+		$first = $s if $first eq "";
+		$len{$s} += abs($f[3] - $f[2]) + 1;
+	}
+	return "" if $first eq "";
+	return "+" if $len{"+"} > $len{"-"};
+	return "-" if $len{"-"} > $len{"+"};
+	return $first;
+}
 
 ############## Get singletons informtion
 $len = @info; my %singleton_coords=();

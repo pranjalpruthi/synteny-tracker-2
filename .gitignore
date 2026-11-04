@@ -6,7 +6,7 @@
 *.o
 *.pm.tdy
 *.bs
-
+/modules-bkup/
 # Devel::Cover
 cover_db/
 
